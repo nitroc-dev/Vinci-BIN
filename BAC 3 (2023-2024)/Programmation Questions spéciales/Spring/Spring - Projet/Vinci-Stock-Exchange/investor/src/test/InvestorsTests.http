@@ -1,0 +1,33 @@
+### Create investor
+POST http://localhost:9003/investor/Thomas
+Content-Type: application/json
+
+{
+  "investor_data": {
+    "username": "Thomas",
+    "email": "thomas.johnen@student.vinci.be",
+    "firstname": "Thomas",
+    "lastname": "Johnen",
+    "birthdate": "1998-01-01"
+  },
+  "password": "password"
+}
+
+### Read user
+GET http://localhost:9003/investor/Thomas
+
+### Update user
+PUT http://localhost:9003/investor/Thomas
+Content-Type: application/json
+
+{
+    "username": "Thomas",
+    "email": "thomas.johnen@hotmail.be",
+    "firstname": "Thomas",
+    "lastname": "Johnen",
+    "birthdate": "1998-01-01"
+}
+
+### Delete user
+DELETE http://localhost:9003/investor/Thomas
+

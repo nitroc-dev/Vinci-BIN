@@ -1,0 +1,132 @@
+# Exercice 5
+
+### Consignes
+- Téléchargez le fichier vuln.c depuis moodle
+- Compilez-le avec la commande :
+```bash
+gcc -g -z execstack -fno-stack-protector -o vuln vuln.c
+```
+- Utilisez un buffer overflow pour exécuter le shellcode vu au cours
+
+### Marche à suivre
+
+- Compiler le fichier "vuln.c"
+```bash
+gcc -g -z execstack -fno-stack-protector -o vuln vuln.c
+```
+- Ouvrir le fichier "vuln" avec GDB
+```bash
+gdb vuln
+```
+- Lancer le programme
+```bash
+run AAAA
+```
+- Breakpoint à vuln
+```bash
+break vuln
+```
+- Lancer le programme
+```bash
+run AAAA
+```
+- Afficher le contenu de la frame
+```bash
+info frame
+```
+```bash
+Stack level 0, frame at 0x7fffffffdd80:
+ rip = 0x55555555516b in vuln (vuln.c:6); saved rip = 0x5555555551dc
+ called by frame at 0x7fffffffdda0
+ source language c.
+ Arglist at 0x7fffffffdd70, args: arg=0x7fffffffe258 "AAAA"
+ Locals at 0x7fffffffdd70, Previous frame's sp is 0x7fffffffdd80
+ Saved registers:
+  rbp at 0x7fffffffdd70, rip at 0x7fffffffdd78
+```
+- Afficher le contenu de buffer
+```bash
+x/68xw &buffer
+```
+```bash
+0x7fffffffdc70: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdc80: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdc90: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdca0: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdcb0: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdcc0: 0x2f2f2f2f      0x2f2f2f2f      0x2f2f2f2f      0x2f2f2f2f
+0x7fffffffdcd0: 0x6d6f682f      0x616b2f65      0x442f696c      0x6d75636f
+0x7fffffffdce0: 0x2f696c61      0x75636f44      0x746e656d      0x65532f73
+0x7fffffffdcf0: 0x6e69616d      0x2f322065      0x72657845      0x65636963
+0x7fffffffdd00: 0x00000000      0xff000000      0x00000000      0x00000000
+0x7fffffffdd10: 0x6e2f3520      0x00322065      0x41414141      0x4c4f4300
+0x7fffffffdd20: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdd30: 0x00ff0000      0x00000000      0x00000000      0x00000000
+0x7fffffffdd40: 0x00000000      0xff000000      0x00000000      0x000000ff
+0x7fffffffdd50: 0x6e69616d      0x2f322065      0x72657845      0x65636963
+0x7fffffffdd60: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdd70: 0xffffdd90      0x00007fff      0x555551dc      0x00005555
+```
+- Lancer le programme avec input python
+```bash
+run $(python2 -c "print 'A'*272")
+```
+- Afficher le contenu de buffer
+```bash
+x/68xw $buffer
+```
+```bash
+0x7fffffffdb60: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdb70: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdb80: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdb90: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdba0: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdbb0: 0x2f2f2f2f      0x2f2f2f2f      0x2f2f2f2f      0x2f2f2f2f
+0x7fffffffdbc0: 0x6d6f682f      0x616b2f65      0x442f696c      0x6d75636f
+0x7fffffffdbd0: 0x6b2f656d      0x2f696c61      0x75636f44      0x746e656d
+0x7fffffffdbe0: 0x65532f73      0x6e69616d      0x2f322065      0x72657845
+0x7fffffffdbf0: 0x00000000      0x00ff0000      0x00000000      0x00000000
+0x7fffffffdc00: 0x41414141      0x412f3520      0x00414141      0x41414141
+0x7fffffffdc10: 0x00000000      0x00000000      0xff000000      0x00000000
+0x7fffffffdc20: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdc30: 0x00000000      0x00000000      0xff000000      0x00000000
+0x7fffffffdc40: 0x65636963      0x762f3520      0x006e6c75      0x41414141
+0x7fffffffdc50: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdc60: 0xffffdc80      0x00007fff      0x555551dc      0x00005555
+```
+- Lander le programme avec input python
+```bash
+run $(python2 hack.py)
+```
+- Afficher le contenu de buffer
+```bash
+x/68xw $buffer
+```
+```bash
+0x7fffffffdc80: 0xffffdda0      0x00007fff      0x00000000      0x00000000
+0x7fffffffdc90: 0xffffdec8      0x00007fff      0x55557dd8      0x00005555
+0x7fffffffdca0: 0xf7ffd000      0x00007fff      0xf7e1dbdb      0x00007fff
+0x7fffffffdcb0: 0x00000010      0x00000030      0xffffdd90      0x00007fff
+0x7fffffffdcc0: 0xffffdcd0      0x00007fff      0x7fb25e00      0xedbda34d
+0x7fffffffdcd0: 0x00000000      0x00000000      0xffffe22e      0x00007fff
+0x7fffffffdce0: 0xffffdec8      0x00007fff      0x55557dd8      0x00005555
+0x7fffffffdcf0: 0x00000000      0x00000000      0xf7fcfb10      0x00007fff
+0x7fffffffdd00: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdd10: 0x00ff0000      0x00000000      0x00000000      0x000000ff
+0x7fffffffdd20: 0x532f6372      0x2f352065      0x3220656e      0x4c4f4300
+0x7fffffffdd30: 0x00000000      0x00000000      0x00000000      0x00000000
+0x7fffffffdd40: 0x00000000      0xff000000      0x00000000      0x00000000
+0x7fffffffdd50: 0x00000000      0x00000000      0x00000000      0x000000ff
+0x7fffffffdd60: 0x532f7374      0x69616d65      0x3220656e      0x6578452f
+0x7fffffffdd70: 0xffffdeb8      0x00007fff      0xf7ffe2d0      0x00007fff
+0x7fffffffdd80: 0xffffdda0      0x00007fff      0x555551dc      0x00005555
+```
+- Next
+```bash
+next
+```
+
+### Résultat
+```bash
+./vuln $(python2 hack.py)
+```

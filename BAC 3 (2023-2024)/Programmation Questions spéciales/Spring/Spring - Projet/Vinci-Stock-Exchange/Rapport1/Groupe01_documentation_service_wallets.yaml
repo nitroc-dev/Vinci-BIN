@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: Spring Project
+  description: OpenAPI Specification for wallet
+  version: 1.0.0
+
+servers:
+  - url: "http://localhost:9001"
+    description: Development server
+
+paths:
+  /wallets:
+    get:
+      summary: Reads all wallets
+      responses:
+        "200":
+          description: Returned a list of wallets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/wallet"
+    post:
+      summary: Creates a new wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/wallet"
+      responses:
+        "201":
+          description: wallet created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/wallet"
+  /wallets/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the wallets
+        required: true
+        schema:
+          type: integer
+          example: 1
+
+    get:
+      summary: Reads one wallet
+      responses:
+        "404":
+          description: wallet was not found
+        "200":
+          description: Returned wallet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/wallet"
+
+    patch:
+      summary: Partially updates a wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/wallet"
+      responses:
+        "200":
+          description: wallet updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/wallet"
+        "404":
+          description: wallet was not found
+
+    delete:
+      summary: Delete a wallet
+      responses:
+        "404":
+          description: wallet was not found
+        "204":
+          description: wallet deleted successfully
+  
+  /wallets/{id}/info:
+    get:
+      summary: Get all the infos of an Investor wallet
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the wallet to check
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: wallet infos retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/wallet"
+
+  /wallets/{id}/total-value:
+    get:
+      summary: View the total value of an Investor wallet
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the wallet to check
+          schema:
+            type: integer
+      responses:
+        "201":
+          description: Total value retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: number
+
+components:
+  schemas:
+    wallet:
+      type: object
+      properties:
+        id:
+          type: integer
+        last_name:
+          type: string
+        first_name:
+          type: string
+        email:
+          type: string
+        cash:
+          type: number
+        stocks:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              stock:
+                $ref: "/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock"
+              quantity:
+                type: integer
+        iban:
+          type: string
+      example:
+        id: 1
+        last_name: "Doe"
+        fist_name: "Jhon"
+        email: "Group01@vinci.be"
+        cash: 1000
+        stocks:
+          AAPL:
+            stock: AAPL
+            quantity: 10
+        iban: BE00 0000 0000 0000
+
+    wallet_to_patch:
+      type: object
+      properties:
+        last_name:
+          type: string
+          required: false
+        first_name:
+          type: string
+          required: false
+        email:
+          type: string
+          required: false
+        cash:
+          type: number
+          required: false
+        stocks:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              stock:
+                $ref: "/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock"
+              quantity:
+                type: integer
+        iban:
+          type: string
+      example:
+        last_name: "Doe"
+        fist_name: "Jhon"
+        email: "Group01@vinci.be"
+        cash: 1000
+        stocks:
+          AAPL:
+            stock: AAPL
+            quantity: 10
+        iban: BE00 0000 0000 0000

@@ -1,0 +1,318 @@
+### Get investor : Ok (Authenticate user before)
+GET http://localhost:8080/investor/user
+Authorization: {{token}}
+
+### Get investor : Unauthorized
+GET http://localhost:8080/investor/user
+Authorization: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+### Create investor : Created
+POST http://localhost:8080/investor/user
+Content-Type: application/json
+
+{
+  "investor_data": {
+    "username": "user",
+    "email": "user@user.com",
+    "firstname": "user",
+    "lastname": "user",
+    "birthdate": "1990-01-01"
+  },
+  "password": "user"
+}
+
+### Create investor : Bad request
+POST http://localhost:8080/investor/user
+Content-Type: application/json
+
+{
+  "investor_data": {
+    "username": "user",
+    "email": "user@user.com",
+    "birthdate": "1990-01-01"
+  },
+  "password": "user"
+}
+
+### Create investor : Conflict if previously created
+POST http://localhost:8080/investor/user
+Content-Type: application/json
+
+{
+  "investor_data": {
+    "username": "user",
+    "email": "user@user.com",
+    "firstname": "user",
+    "lastname": "user",
+    "birthdate": "1990-01-01"
+  },
+  "password": "user"
+}
+
+### Update investor : Ok
+PUT http://localhost:8080/investor/user
+Content-Type: application/json
+
+{
+  "username": "user",
+  "email": "userupdated@user.com",
+  "firstname": "user",
+  "lastname": "user",
+  "birthdate": "1990-01-01"
+}
+
+### Update investor : Bad request
+PUT http://localhost:8080/investor/user
+Content-Type: application/json
+
+{
+  "username": "user",
+  "email": "userupdated@user.com",
+  "lastname": "user",
+  "birthdate": "1990-01-01"
+}
+
+### Update investor : Not found
+PUT http://localhost:8080/investor/user1
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "email": "user1updated@user.com",
+  "firstname": "user1",
+  "lastname": "user1",
+  "birthdate": "1990-01-01"
+}
+
+### Delete investor : Ok
+DELETE http://localhost:8080/investor/user
+
+### Delete investor : Bad request if wallet not empty
+DELETE http://localhost:8080/investor/user
+
+### Delete investor : Not found
+DELETE http://localhost:8080/investor/user1
+
+### Initiate authentication : Ok
+POST http://localhost:8080/authentication/connect
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+> {% client.global.set("token", response.body) %}
+
+### Initiate authentication : Unauthorized
+POST http://localhost:8080/authentication/connect
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "wrongpassword"
+}
+
+> {% client.global.set("token", response.body) %}
+
+### Initiate authentication : Bad request
+POST http://localhost:8080/authentication/connect
+Content-Type: application/json
+
+{
+  "username": "user"
+}
+
+> {% client.global.set("token", response.body) %}
+
+### Update credentials : Ok (Retest with new credentials)
+PUT http://localhost:8080/authentication/user
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "userupdated"
+}
+
+### Update credentials : Bad request
+PUT http://localhost:8080/authentication/user
+Content-Type: application/json
+
+{
+  "username": "user"
+}
+
+### Update credentials : Not found
+PUT http://localhost:8080/authentication/user1
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "userupdated"
+}
+
+### Pass an order : Ok
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "owner": "user",
+  "timestamp": 457696995,
+  "ticker": "AAPL",
+  "quantity": 10,
+  "side": "BUY",
+  "type": "LIMIT",
+  "limit": 100,
+  "filled": 0
+}
+
+### Pass an order : Bad request
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "owner": "user",
+  "timestamp": 457696995,
+  "quantity": 10,
+  "side": "BUY",
+  "type": "LIMIT",
+  "limit": 100,
+  "filled": 0
+}
+
+### Get all orders : Ok (Authenticate user before)
+GET http://localhost:8080/order/by-user/user
+Authorization: {{token}}
+
+### Get all orders : Unauthorized
+GET http://localhost:8080/order/by-user/user
+Authorization: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+### Get all orders : Not found
+GET http://localhost:8080/order/by-user/user1
+Authorization: {{token}}
+
+### Get wallet : Ok
+GET http://localhost:8080/wallet/user
+Authorization: {{token}}
+
+### Get wallet : Unauthorized
+GET http://localhost:8080/wallet/user
+Authorization: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+### Get wallet : Not found
+GET http://localhost:8080/wallet/user1
+Authorization: {{token}}
+
+### Add cash to wallet : Ok
+POST http://localhost:8080/wallet/user/cash
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "amount": 1000
+}
+
+### Add cash to wallet : Unauthorized
+POST http://localhost:8080/wallet/user/cash
+Content-Type: application/json
+
+{
+  "amount": 1000
+}
+
+### Add cash to wallet : Not found
+POST http://localhost:8080/wallet/user1/cash
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "amount": 1000
+}
+
+### Withdraw cash from wallet : Ok
+POST http://localhost:8080/wallet/user/cash
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "amount": -1000
+}
+
+### Withdraw cash from wallet : Unauthorized
+POST http://localhost:8080/wallet/user/cash
+Content-Type: application/json
+
+{
+  "amount": -1000
+}
+
+### Withdraw cash from wallet
+POST http://localhost:8080/wallet/user1/cash
+Content-Type: application/json
+
+{
+  "amount": -1000
+}
+
+### Get net worth : Ok
+GET http://localhost:8080/wallet/user/net-worth
+Authorization: {{token}}
+
+### Get net worth : Unauthorized
+GET http://localhost:8080/wallet/user/net-worth
+
+### Get net worth : Not found
+GET http://localhost:8080/wallet/user1/net-worth
+
+### Add stock to wallet : Ok
+POST http://localhost:8080/wallet/user/position/AAPL
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+
+### Add stock to wallet : Unauthorized
+POST http://localhost:8080/wallet/user/position/AAPL
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+
+### Add stock to wallet : Not found
+POST http://localhost:8080/wallet/user1/position/AAPL
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+
+### Withdraw stock from wallet : Ok
+POST http://localhost:8080/wallet/user/position/AAPL
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "quantity": -10
+}
+
+### Withdraw stock from wallet : Unauthorized
+POST http://localhost:8080/wallet/user/position/AAPL
+Content-Type: application/json
+
+{
+  "quantity": -10
+}
+
+### Withdraw stock from wallet : Not found
+POST http://localhost:8080/wallet/user1/position/AAPL
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "quantity": -10
+}

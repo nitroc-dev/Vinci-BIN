@@ -1,0 +1,354 @@
+openapi: 3.0.3
+info:
+  title: Orders service
+  description: OpenAPI Specification for wallet
+  version: 1.0.0
+
+servers:
+  - url: "http://localhost:9002"
+    description: Development server
+
+paths:
+  /orders:
+    get:
+      summary: Reads all Orders
+      responses:
+        '200':
+          description: Return a list of Orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+
+    post:
+      summary: Creates a new Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_to_create'
+      responses:
+        '201':
+          description: Return a single Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '400':
+          description: Bad request
+        '409':
+          description: Order already exists
+
+  /orders?type:
+    parameters:
+      - name: type
+        in: query
+        required: true
+        description: The type of the Order to read
+        schema:
+          type: string
+          example: "MARKET"
+    get:
+      summary: Reads all Orders of a type
+      responses:
+        '200':
+          description: Return a list of Orders of a type
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '400':
+          description: Invalid type of Order
+
+  /orders?action:
+    parameters:
+      - name: action
+        in: query
+        required: true
+        description: The action of the Orders to read (BUY or SELL)
+        schema:
+          type: string
+          example: "SELL"
+    get:
+      summary: Reads all Orders for an action
+      responses:
+        '200':
+          description: Return a list of Orders for an action
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '400':
+          description: Invalid action for Order
+
+  /orders/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the Order to read
+        schema:
+          type: integer
+          example: 1
+    get:
+      summary: Reads a single Order
+      responses:
+        '200':
+          description: Return a single Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '404':
+          description: Order not found
+    patch:
+      summary: Updates an existing Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order_to_patch'
+      responses:
+        '200':
+          description: Return a single Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '404':
+          description: Order not found
+    delete:
+      summary: Delete order
+      responses:
+        "200":
+          description: Order deleted
+          content:
+            application/json:
+              schema:
+                $ref: "/Groupe01_documentation_service_orders.yaml/#/components/schemas/order"
+        "400":
+          description: Bad request
+        "404":
+          description: Order not found
+
+  /orders/stocks/{stockId}:
+    parameters:
+      - name: stockId
+        in: path
+        required: true
+        description: The name of the Stock to get orders
+        schema:
+          type: integer
+          example: 1
+    get:
+      summary: Get all orders for a stock by stockId
+      responses:
+        '200':
+          description: Return a list of Orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '404':
+          description: Stock not found
+    delete:
+      summary: Delete all existing Orders by stockId
+      responses:
+        '200':
+          description: Order deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '404':
+          description: Order not found
+
+  /orders/stocks/{stockName}:
+    parameters:
+      - name: stockName
+        in: path
+        required: true
+        description: The name of the Stock to get orders
+        schema:
+          type: string
+          example: "AAPL"
+    get:
+      summary: Get all orders for a stock by stockName
+      responses:
+        '200':
+          description: Return a list of Orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '404':
+          description: Stock not found
+    delete:
+      summary: Delete all existing Orders by stockName
+      responses:
+        '200':
+          description: Order deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '404':
+          description: Order not found
+
+  /orders/emitter/{emitterId}:
+    parameters:
+      - name: emitterId
+        in: path
+        required: true
+        description: The id of the Emitter to get orders
+        schema:
+          type: integer
+          example: 1
+    get:
+      summary: All orders for an emitter
+      responses:
+        '200':
+          description: Return a list of Orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        '404':
+          description: Emitter not found
+    delete:
+      summary: Delete all existing Orders of an emitter
+      responses:
+        '200':
+          description: Order deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '404':
+          description: Order not found
+components:
+  schemas:
+    order:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+          enum: [ MARKET, LIMIT ]
+        price:
+          type: number
+          required: false
+        action:
+          type: string
+          enum: [ SELL, BUY ]
+        qty:
+          type: integer
+        stock:
+          $ref: "/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock"
+        emitter_id:
+          type: integer
+        status:
+          type: string
+          enum: [ EXECUTED, NOT_EXECUTED, PARTIALLY_EXECUTED ]
+      example:
+        id: 1
+        type: MARKET
+        price: 100
+        action: SELL
+        qty: 10
+        stock:
+          id: 1
+          name: AAPL
+          value: 100
+        emitter_id: 1
+        status: NOT_EXECUTED
+
+    order_to_patch:
+      type: object
+      properties:
+        id:
+          type: integer
+          required: true
+        type:
+          type: string
+          enum: [ MARKET, LIMIT ]
+          required: false
+        price:
+          type: number
+          required: false
+        action:
+          type: string
+          enum: [ SELL, BUY ]
+          required: false
+        qty:
+          type: integer
+          required: false
+        stock:
+          $ref: "/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock"
+        emitter_id:
+          type: integer
+        status:
+          type: string
+          enum: [ NOT_EXECUTED, EXECUTED,  PARTIALLY_EXECUTED ]
+          required: false
+      example:
+        id: 1
+        type: MARKET
+        price: 100
+        action: SELL
+        qty: 10
+        stock:
+          id: 1
+          name: AAPL
+          value: 100
+        emitter_id: 1
+        status: NOT_EXECUTED
+
+    order_to_create:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [ MARKET, LIMIT ]
+        price:
+          type: number
+          required: false
+        action:
+          type: string
+          enum: [ SELL, BUY ]
+        qty:
+          type: integer
+        stock:
+          $ref: "/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock"
+        emitter_id:
+          type: integer
+        status:
+          type: string
+          enum: [ EXECUTED, NOT_EXECUTED, PARTIALLY_EXECUTED ]
+      example:
+        type: MARKET
+        price: 100
+        action: SELL
+        qty: 10
+        stock:
+          id: 1
+          name: Apple
+          libelle: APPL
+          price: 100
+        emitter_id: 1
+        status: NOT_EXECUTED

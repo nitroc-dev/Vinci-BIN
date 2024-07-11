@@ -1,0 +1,8 @@
+91.160.48.68 - - [3/Sep/2020:18:18:10 +0200] "GET /?C=M;O=D HTTP/1.1" 301 178 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" "-"
+78.224.72.158 - - [3/Sep/2020:18:24:52 +0200] "GET / HTTP/1.1" 301 178 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0" "-"
+192.241.199.4 - - [3/Sep/2020:19:11:15 +0200] "GET / HTTP/1.1" 301 178 "-" "Mozilla/5.0 zgrab/0.x" "-"
+40.121.69.161 - - [3/Sep/2020:19:16:32 +0200] "GET /.env HTTP/1.1" 301 178 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
+40.121.69.161 - - [3/Sep/2020:19:16:32 +0200] "POST / HTTP/1.1" 301 178 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
+185.172.110.223 - - [3/Sep/2020:19:16:37 +0200] "GET / HTTP/1.1" 301 178 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0" "-"
+66.249.75.16 - - [3/Sep/2020:19:23:28 +0200] "GET / HTTP/1.1" 301 178 "-" "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.97 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "-"
+66.249.75.23 - - [3/Sep/2020:19:23:30 +0200] "GET / HTTP/1.1" 200 0 "-" "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.97 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "-"

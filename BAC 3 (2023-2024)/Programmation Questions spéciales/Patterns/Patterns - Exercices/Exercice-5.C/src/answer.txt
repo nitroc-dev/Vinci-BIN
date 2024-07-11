@@ -1,0 +1,23 @@
+Visitor :
+- <<interface>> Visitor => Traitement
+- ConcreteVisitor => Listeur, ListeurNom, Totaliseur
+- Client => Main
+- Element => Partie
+- ConcreteElement => Groupe, Valeur
+- visit() : void traiterValeur(), void traiterGroupe()
+- accept() : void demande(Traitement traitement)
+
+Composite :
+- IComponent => Partie
+- Leaf => Valeur
+- Composite => Groupe
+- operation(): void demande(Traitement traitement)
+
+Builder :
+- Builder => Fabricant
+- Director => Lecteur
+- ConcreteBuilder => Fabriquant
+- Product => Partie
+- construct() : void construire()
+- getResult() : Partie getResultat()
+- buildPart() : void construireGroupe(), void construireValeur()

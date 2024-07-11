@@ -1,0 +1,105 @@
+###Add new Order Exemple 1 Alice
+POST http://localhost:9005/order
+Content-Type: application/json
+
+{
+  "owner": "Alice",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "SELL",
+  "type": "LIMIT",
+  "limit": 10
+}
+
+###Modify Order Exemple 1 Alice
+PATCH http://localhost:9005/order/f3908500-b792-4f73-8909-5a1690d4dcc5
+Content-Type: application/json
+
+{
+  "filled": 2
+}
+
+###Add new Order Exemple 1 Bob
+POST http://localhost:9005/order/
+Content-Type: application/json
+
+{
+  "owner": "Bob",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "BUY",
+  "type": "LIMIT",
+  "limit": 13
+}
+
+###Add new Order Exemple 2 Alice
+POST http://localhost:9005/order/
+Content-Type: application/json
+
+{
+  "owner": "Alice",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "SELL",
+  "type": "LIMIT",
+  "limit": 50
+}
+
+###Add new Order Exemple 2 Bob
+POST http://localhost:9005/order/
+Content-Type: application/json
+
+{
+  "owner": "Bob",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "BUY",
+  "type": "LIMIT",
+  "limit": 10
+}
+
+###Add new Order Exemple 4 Alice
+POST http://localhost:9005/order/
+Content-Type: application/json
+
+{
+  "owner": "Alice",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "SELL",
+  "type": "MARKET"
+}
+
+###Get all Order (not in the api)
+GET http://localhost:9005/order/
+
+###Get order by guid
+GET http://localhost:9005/order/776f9ca0-26a0-4620-8aec-cafb4bfde938
+
+###Get by owner
+GET http://localhost:9005/order/by-user/Alice
+
+###Get open order by ticker/side SELL
+GET http://localhost:9005/order/open/by-ticker/APPL/SELL
+
+###Get open order by ticker/side BUY
+GET http://localhost:9005/order/open/by-ticker/APPL/BUY
+
+
+# Errors
+###Bad Post request (400 Bad Request)
+POST http://localhost:9005/order/
+Content-Type: application/json
+
+{
+  "owner": "Alice",
+  "ticker": "APPL",
+  "quty": 5,
+  "side": "SELL",
+  "type": "MARKET"
+}
+
+###Order not found by guid (404 Not Found)
+GET http://localhost:9005/order/f4e813cd-958c-433a-92cb-d5d4f8f5ff3c
+
+###Order

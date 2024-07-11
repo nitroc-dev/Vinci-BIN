@@ -1,0 +1,35 @@
+Singleton :
+- Singleton => EstMorte, EstVivante
+
+Observer :
+- Observer => Espion
+- update() => utiliserRenseignements()
+- ConcreteObserver => JeuDeLaVieGUI
+- Subject => JeuDeLaVie
+- _observerCollection => _espions
+- registerObserver() => attacher()
+- unregisterObserver() => detacher()
+- notifyObservers() => prevenir()
+
+State :
+- State => Situtation
+- ConcreteStateA => EstVivante
+- ConcreteStateB => EstMorte
+- Context => Cellule
+- handle() => vit(), meurt(), estVivante(), toggle(), ajouterAuxVoisinsVivants(), generer()
+- request() => vit(), meurt(), estVivante(), toggle(), ajouterAuxVoisinsVivants(), generer()
+
+Command Pattern :
+- Command => Activite
+- execute() => activer()
+- ConcreteCommand => Vit, Meurt
+- Receiver => Cellule
+- doAction() => vit(), meurt()
+- Invoker => JeuDeLaVie
+
+Visitor :
+- Visitor => Parcourir
+- ConcreteVisitor => ParcourtNormal, ParcourtFort
+- Element => Cellule
+- accept() => generer()
+- visitConcreteElement() => parcourtCelluleVivante(), parcourtCelluleMorte()

@@ -1,0 +1,62 @@
+### Get the net-worth for a user
+GET http://localhost:9007/wallet/user1/net-worth
+
+### Get the net-worth for a user that does not exist
+GET http://localhost:9007/wallet/test/net-worth
+
+### Get the open positions for a user
+GET http://localhost:9007/wallet/user1
+
+### Get the open positions for a user that does not exist
+GET http://localhost:9007/wallet/test
+
+### Add positions for a user
+POST http://localhost:9007/wallet/user1
+Content-Type: application/json
+
+[
+    {
+        "ticker": "AAPL",
+        "quantity": 10,
+      "unitValue": 100
+    },
+    {
+        "ticker": "GOOG",
+        "quantity": 20,
+        "unitValue": 200
+    }
+]
+
+### Add positions that does not exist for a user
+POST http://localhost:9007/wallet/user1
+Content-Type: application/json
+
+[
+  {
+    "ticker": "AAPL",
+    "quantity": 10,
+    "unitValue": 100
+  },
+  {
+    "ticker": "TEST",
+    "quantity": 5,
+    "unitValue": 736
+  }
+]
+
+### Add positions for a user that does not exist
+POST http://localhost:9007/wallet/test
+Content-Type: application/json
+
+[
+  {
+    "ticker": "AAPL",
+    "quantity": 10,
+    "unitValue": 100
+  },
+  {
+    "ticker": "GOOG",
+    "quantity": 20,
+    "unitValue": 200
+  }
+]

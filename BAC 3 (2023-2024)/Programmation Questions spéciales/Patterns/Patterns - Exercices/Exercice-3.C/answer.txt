@@ -1,0 +1,31 @@
+3 Patterns
+1 - Strategy pour chaque Distance : calcul de la distance d'une certaine maniere km ou miles, en fonction du boat
+
+ Decorator: Captain. La logique c'est que il implémente une classe et il a un attribut de la meme classe
+
+- Adapter : pour le BattleFishingBoat qui fish() au lieu de fire() et sail() au lieu de move()
+
+X Composite X : doit avoir en attribut une collection.
+
+Pour la Strategy :
+    > Interface Strategy = Interface Distance
+    > ConcreteStrategyA = DistanceKM
+    > ConcreteStrategyB = DistanceMiles
+    > Context = BattleShip avec la méthode move(Distance distance)
+        a l'instanciation (ex: Main) on va utiliser soit la distance en Miles soit en KM
+    > execute : getDistance()
+
+Pour le Decorator :
+    > Component = BattleShip (avec méthodes fire() et move())
+    > ConcreteComponent = BattleFishingBoat
+    > Decorator = /
+    > ConcreteDecorator = Captain
+    > operation : fire() et move()
+
+Pour l'Adapter :
+    > Adaptor : BattleFishingBoat
+    > Adaptee : FishingBoat
+    > Client : App
+    > doWork() : main()
+    > methodA() : fire() et move()
+    > methodB() (adaptee) : fish() et sail()

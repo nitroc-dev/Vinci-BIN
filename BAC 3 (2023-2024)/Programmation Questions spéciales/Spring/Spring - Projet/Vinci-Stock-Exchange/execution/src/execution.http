@@ -1,0 +1,48 @@
+###Add new Order Exemple 2 Alice
+POST {{order}}
+Content-Type: application/json
+
+{
+  "owner": "Alice",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "BUY",
+  "type": "LIMIT",
+  "limit": 50
+}
+> {%
+    client.global.set("buyer", response.body.owner);
+    client.global.set("buyer_guid", response.body.guid);
+%}
+
+###Add new Order Exemple 2 Bob
+POST {{order}}
+Content-Type: application/json
+
+{
+  "owner": "Bob",
+  "ticker": "APPL",
+  "quantity": 5,
+  "side": "SELL",
+  "type": "LIMIT",
+  "limit": 10
+}
+> {%
+    client.global.set("seller", response.body.owner);
+    client.global.set("seller_guid", response.body.guid);
+%}
+
+### Test Execution
+POST {{execution}}/AAPL/Bob/Alice
+Content-Type: application/json
+
+{
+  "ticker": "{{ticker}}",
+  "seller": "{{seller}}",
+  "buyer": "{{buyer}}",
+  "buy_order_guid": "{{buyer_guid}}",
+  "sell_order_guid": "{{seller_guid}}",
+  "quantity": 1,
+  "price": 100
+}
+

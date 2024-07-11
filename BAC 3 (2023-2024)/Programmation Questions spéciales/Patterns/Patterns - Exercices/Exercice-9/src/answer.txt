@@ -1,0 +1,64 @@
+Iterator:
+- ConcreteIterator => ShapeIterator
+- next() => next()
+- hasNext() => hasNext()
+- ConcreteAggregate => ShapeVector
+
+AbstractFactory:
+- AbstractFactory => ShapeFactory
+- ConcreteFactory => CircleFactory, GeneralShapeFactory
+- Client => Shape
+- AbstractProduct => Polygon
+- Product => Circle, Rectangle, Triangle
+- createProduct() => createShape()
+
+Observer:
+- Observer => Kaleidoscope
+- Subject => KaleidoscopeControl
+- ObserverCollection => theViews
+- registerObserver() => register(Kali k)
+- notifyObservers() => turn()
+- Concrete => FlipKaleidoscopeView, NegativeKaleidoscopeView, RotateKaleidoscopeView, TraditionalKaleidoscopeView
+- update() => update()
+
+Strategy:
+- Strategy => ShapeMutationStrategy
+- ConcreteStrategy => CompositeShapeMutationStrategy, ExplodeShapeMutationStrategy, GeneralShapeMutationStrategy, GrowShapeMutationStrategy, ImplodeShapeMutationStrategy, SpinShapeMutationStrategy
+- Context => Kaleidoscope
+- execute() => mutate()
+
+TemplateMethod:
+- AbstractClass => KaleidoscopeView
+- TemplateMethod() => paint()
+- ConcreteClass => FlipKaleidoscopeView, NegativeKaleidoscopeView, RotateKaleidoscopeView, TraditionalKaleidoscopeView
+- PrimitiveOperation() => drawShapes()
+
+Composite:
+- IComponent => ShapeMutationStrategy
+- Composite => CompositeShapeMutationStrategy
+- Leaf => ExplodeShapeMutationStrategy, GeneralShapeMutationStrategy, GrowShapeMutationStrategy, ImplodeShapeMutationStrategy, SpinShapeMutationStrategy
+- Operation() => mutate()
+
+TemplateMethod:
+- AbstractClass => Shape
+- TemplateMethod() =>
+
+Adapter:
+- Adaptor => ShapeVector
+- Adaptee => Shape
+- Client => Kaleidoscope
+
+
+Prototype:
+- Prototype => Shape
+- ConcretePrototype => Circle, Rectangle, Triangle, Square
+- Client => ShapeVector
+- clone() => copy()
+
+Observer:
+- Observer => KaleidoscopeControl
+- Subject => Kaleidoscope
+- ObserverCollection => theScopes
+- registerObserver() => register(Kaleidoscope k)
+- notifyObservers() => turn()
+- ConcreteObserver =>

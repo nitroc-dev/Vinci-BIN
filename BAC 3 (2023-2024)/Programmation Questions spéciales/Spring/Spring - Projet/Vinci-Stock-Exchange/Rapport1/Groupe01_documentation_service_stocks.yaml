@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Stocks Service
+  version: 1.0.0
+
+servers:
+  - url: "http://localhost:9006"
+    description: Development server
+
+paths:
+  /stocks:
+    get:
+      summary: Reads all Stocks
+      responses:
+        '200':
+          description: Return a list of Stocks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+    post:
+      summary: Add a Stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock_to_create'
+      responses:
+        '200':
+          description: Return the stock added
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+        '400':
+          description: Bad request
+        '409':
+          description: Stock already exists
+
+  /stocks/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the stock
+        required: true
+        schema:
+          type: integer
+          example: 1
+
+    get:
+      summary: Reads one stock
+      responses:
+        '200':
+          description: Return a  Stocks
+          content:
+            application/json:
+              schema:
+                $ref: './Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+    patch:
+      summary: Modify stock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock_to_patch'
+      responses:
+        '200':
+          description: Modification succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+        '404':
+          description: Stock not found
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+    delete:
+      summary: Delete stock
+      responses:
+        '200':
+          description: Stock deleted
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_stocks.yaml/#/components/schemas/stock'
+        '400':
+          description: Bad request
+        '404':
+          description: Stock not found
+
+components:
+  schemas:
+    stock:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        libelle:
+          type: string
+        price:
+          type: number
+      example:
+        id: 1
+        name: "Apple"
+        libelle: "APPL"
+        price: 1.0
+
+    stock_to_patch:
+      type: object
+      properties:
+        id:
+          type: integer
+          required: true
+        name:
+          type: string
+          required: false
+        libelle:
+          type: string
+          required: false
+        price:
+          type: number
+          required: false
+      example:
+        id: 1
+        name: "Apple"
+        libelle: "APPL"
+        price: 1.0
+
+    stock_to_create:
+      type: object
+      properties:
+        name:
+          type: string
+        libelle:
+          type: string
+        price:
+          type: number
+      example:
+        name: "Appel"
+        libelle: "APPL"
+        price: 1.0

@@ -1,0 +1,4 @@
+Chain of Responsability
+- Handler => Generateur
+- ConcreteHandler => AmEx, DinersClub, Discover, MasterCard, Visa
+- Client => CarteDeCredit

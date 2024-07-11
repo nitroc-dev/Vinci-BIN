@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: Gateway
+  description: OpenAPI Specification for Compte, Operations, and order
+  version: 1.0.0
+
+servers:
+  - url: "http://localhost:9005"
+    description: Development server
+
+paths:
+  /exchange/sell:
+    patch:
+      summary: Sell based on an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+                - type: object
+                  properties:
+                    orderBuyList:
+                      type: array
+                      items:
+                        $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+      responses:
+        '200':
+          description: Transaction succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '400':
+          description: Transaction failed
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+  /exchange/buy:
+    patch:
+      summary: Buy based on an order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+                - type: object
+                  properties:
+                    orderSellList:
+                      type: array
+                      items:
+                        $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+            
+      responses:
+        '200':
+          description: Transaction succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '400':
+          description: Transaction failed
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '/Groupe01_documentation_service_orders.yaml/#/components/schemas/order'
