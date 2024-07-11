@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="author" content="Choquet Olivier" />
+<title>Gestion Parc Info</title>
+<!-- une icône dans la barre du navigateur-->
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+<body>
+	<!-- bannière -->
+	<header>
+		<img src="images/computer.jpg" alt="ordi"/>
+		<img src="images/logo.png" alt="logo"/>
+	</header>
+	<!-- menu -->
+	<nav>
+			<ul>
+				<li><a href="index.html"> Accueil - Liste des incidents </a></li>
+				<li><a href="form.html"> Signaler un incident </a></li>
+			</ul>
+	</nav>
+	<!-- partie centrale -->
+	<section class="conteneur">
+		<article>
+			<h2> Liste des Incidents </h2>
+			<table id="listeIncidents">
+				<thead>
+					<tr> <!-- 1ère ligne, entête des colonnes-->
+						<th class="Nom">Nom machine</th>
+						<th class="Local">Local</th>
+						<th class="Gravite">Gravité incident</th>
+						<th class="Resume">Résumé incident</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-</td>
+						<td>Tous les locaux</td>
+						<td>Important</td>
+						<td>Le wifi est ralenti </td>
+					</tr>
+					<tr> 
+						<td>DELL1007</td>
+						<td>017</td>
+						<td>Grave</td>
+						<td>Carte mère foutue</td>
+					</tr>
+					<tr>
+						<td>HP0706</td>
+						<td>025</td>
+						<td>Moyen</td>
+						<td>Internet Explorer ne fonctionne pas </td>
+					</tr>
+					<tr>
+						<td>DELL0506</td>
+						<td>Cave</td>
+						<td>Faible</td>
+						<td>Il y avait encore un pc là ? </td>
+					</tr>
+				</tbody>
+			</table>
+		</article>	
+		<aside>
+			<h4> Derniers incidents </h4>
+			<p> Crash machine DELL0506 </p>
+			<p> Problème de surcharge Wifi </p>
+		</aside>
+	</section>
+	<footer>
+		<p>
+			Design by Choquet Olivier.
+		</p>
+	</footer>
+</body>
+
+</html>

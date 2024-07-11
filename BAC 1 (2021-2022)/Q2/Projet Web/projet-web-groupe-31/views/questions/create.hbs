@@ -1,0 +1,33 @@
+<main class="bg-gray-400 text-center h-[88vh] place-content-center grid w-full">
+    {{#if error}}
+        <div class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </div>
+    {{/if}}
+    <br>
+    <div class="items-center text-center place-content-center">
+        <h1 class="text-2xl">Poser une question</h1>
+    </div>
+    <br />
+    <form method="post" action="/questions/add" class="w-[100vh]">
+        <label for="title">Titre :</label>
+        <br />
+        <input class="w-full text-center h-[4vh] bg-gray-200 rounded" type="text" name="title" id="title" required>
+        <br />
+        <br />
+        <label for="category">Categorie :</label>
+        <br />
+        {{#each categories}}
+            <label class="bg-gray-600 m-1 p-0.5 px-2 rounded text-white">
+                <input type="radio" name="id_category" id="id_category" value="{{this.id_category}}" required> {{this.name}}
+            </label>
+        {{/each}}
+        <br />
+        <br />
+        <label for="subject">Description :</label>
+        <br />
+        <textarea class="w-full text-center h-[10vh] bg-gray-200 resize-none rounded" name="subject" id="subject" required></textarea>
+        <br />
+        <input class="bg-gray-600 cursor-pointer m-1 p-1 px-4 rounded text-gray-400 hover:text-white" type="submit" value="Demander">
+    </form>
+</main>

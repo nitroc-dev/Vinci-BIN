@@ -1,0 +1,24 @@
+<main class="bg-gray-400 text-center h-[88vh] place-content-center grid w-full">
+    {{#if error}}
+        <div class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </div>
+    {{/if}}
+    <br>
+    <div class="items-center text-center place-content-center">
+        <h1 class="text-2xl">Connexion</h1>
+    </div>
+    <br />
+    <form action="/users/login" method="post" class="w-[100vh]">
+        <label for="email">Email: </label>
+        <br />
+        <input class="w-full text-center h-[4vh] bg-gray-200 rounded" type="text" name="email" id="email" placeholder="Votre email" required>
+        <br />
+        <br />
+        <label for="password">Mot de passe: </label>
+        <br />
+        <input class="w-full text-center h-[4vh] bg-gray-200 rounded" type="password" name="password" id="password" placeholder="Votre mot de passe" required>
+        <br />
+        <input class="bg-gray-600 m-1 p-1 px-4 rounded text-gray-400 hover:text-white" type="submit" value="Connexion" />
+    </form>
+</main>

@@ -1,0 +1,94 @@
+<main class="bg-gray-400 grid w-full h-fit">
+    {{#if error}}
+        <div class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </div>
+    {{/if}}
+    <div class="items-center text-center place-content-center">
+        <h2 class="text-2xl">Question de {{theQuestion.first_name}} {{theQuestion.last_name}}</h2>
+    </div>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-1/2">Intitulé</th>
+            <th class="border-solid border rounded w-1/2">Information</th>
+        </tr>
+        <tr class="border-solid border-2 rounded">
+            <td class="border-solid border rounded p-2"> <h1>{{theQuestion.title}}</h1></td>
+            <td class="border-solid border rounded p-2 text-center"> <p>{{category}}</p></td>
+        </tr>
+        <tr>
+            <td class="border-solid border rounded p-2"><p>{{theQuestion.subject}}</p></td>
+            <td class="border-solid border rounded p-2 text-center">
+                <p>{{theQuestion.first_name}} {{theQuestion.last_name}}</p>
+                <br />
+                <p>{{theQuestion.creation_date}}</p>
+                {{#if isAuthenticated}}
+                    {{#unless theQuestion.is_reported}}
+                        <form method="post" action="/questions/report">
+                            <input type="hidden" value="{{theQuestion.id_question}}" name="id_question">
+                            <input class="bg-gray-600 m-1 p-0.5 px-2 rounded text-gray-400 hover:text-white cursor-pointer" type="submit" value="Signaler">
+                        </form>
+                    {{/unless}}
+                {{/if}}
+            </td>
+        </tr>
+    </table>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-1/5">Réponse</th>
+            <th class="border-solid border rounded w-1/5">Date</th>
+            <th class="border-solid border rounded w-1/5">Auteur</th>
+            <th class="border-solid border rounded w-1/5">Actions</th>
+        </tr>
+        {{#each listAnswers}}
+            <tr class="border-solid border-2 rounded">
+                <td class="{{#if this.is_correct}} text-green-800 {{/if}}border-solid border rounded p-2 text-center">{{this.question_answer}}</td>
+                <td class="border-solid border rounded p-2 text-center">{{this.creation_date}}</td>
+                <td class="border-solid border rounded p-2 text-center">{{this.first_name}} {{this.last_name}}</td>
+                {{#if ../isAuthenticated}}
+                    {{#unless this.is_reported}}
+                        <td class="border-solid border rounded p-2 text-center">
+                            <form method="post" action="/answers/report">
+                                <input type="hidden" value="{{this.id_answer}}" name="id_answer">
+                                <input type="hidden" value="{{this.id_question}}" name="id_question">
+                                <input class="bg-gray-600 m-1 p-0.5 px-2 rounded text-gray-400 hover:text-white cursor-pointer" type="submit" value="Signaler">
+                            </form>
+                        </td>
+                    {{else}}
+                        <td class="text-center">Signalée</td>
+                    {{/unless}}
+                {{else}}
+                    <td class="text-center">Vous n'êtes pas connecté</td>
+                {{/if}}
+                {{#unless ../isSolved}}
+                    {{#if ../isOwnerOfQuestion}}
+                        <td class="border-solid border rounded p-2 text-center">
+                            <form action="/answers/validate" method="post">
+                                <input type="hidden" value="{{../theQuestion.id_user}}" name="id_user">
+                                <input type="hidden" value="{{this.id_answer}}" name="id_answer">
+                                <input class="bg-gray-600 m-1 p-0.5 px-2 rounded text-gray-400 hover:text-white cursor-pointer" type="submit" value="Valider">
+                            </form>
+                        </td>
+                    {{/if}}
+                {{/unless}}
+            </tr>
+        {{/each}}
+    </table>
+    {{#unless isSolved}}
+        {{#if isAuthenticated}}
+            <section class="m-8 text-center place-content-center">
+                <h3 class="text-2xl">Répondre à la question</h3>
+
+                <form action="/answers/add" method="post">
+                    <input type="hidden" value="{{theQuestion.id_question}}" name="id_question">
+                    <br>
+                    <label class="w-full text-center h-[4vh] bg-gray-200 object-contain h-[28px] w-[800px]" >
+                        <textarea class="text-center w-5/6 bg-gray-200 resize-none rounded" name="newAnswer" placeholder="Votre réponse" required></textarea>
+                    </label>
+                    <br/>
+                    <input class="bg-gray-600 m-8 p-0.5 px-2 rounded text-gray-400 hover:text-white cursor-pointer" type="submit" value="Poster la réponse" />
+                </form>
+            </section>
+        {{/if}}
+    {{/unless}}
+</main>

@@ -1,0 +1,26 @@
+<section>
+    <form method="post" action="/users/add">
+        <label>
+            Nom : <input type="text" name="nom"/>
+        </label>
+        <br />
+        <label>
+            Prenom : <input type="text" name="prenom"/>
+        </label>
+        <br />
+        <label>
+            Email : <input type="email" name="email"/>
+        </label>
+        <br />
+        <label>
+            Mot de passe : <input type="password" name="password1"/>
+        </label>
+        <br />
+        <label>
+            Confirmation mot de passe : <input type="password" name="password2"/>
+        </label>
+        <br />
+        <input type="submit" value="S'enregistrer">
+    </form>
+    <p>{{message}}</p>
+</section>

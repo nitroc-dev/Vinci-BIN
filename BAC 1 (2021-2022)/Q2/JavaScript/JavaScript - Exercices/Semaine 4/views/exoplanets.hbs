@@ -1,0 +1,78 @@
+<section>
+    <h1>Liste des exoplanètes</h1>
+
+    <table>
+        <tr>
+            <th>Identifiant</th>
+            <th>Nom Exoplanète</th>
+            <th>hclass</th>
+            <th>Année de découverte</th>
+            <th>Actions</th>
+        </tr>
+        {{#each exoplanetsList}}
+        <tr>
+            <td>{{this.exoplanet_id}}</td>
+            <td>{{this.unique_name}}</td>
+            <td>{{this.hclass}}</td>
+            <td>{{this.discovery_year}}</td>
+            <td>
+                <form method="post" action="/exoplanets/delete">
+                    <input type="hidden" value="{{this.exoplanet_id}}" name="exoplanet_id"/>
+                    <input type="submit" value="Supprimer"/>
+                </form>
+                <form method="get" action="/exoplanets/update">
+                    <input type="hidden" value="{{this.exoplanet_id}}" name="exoplanet_id"/>
+                    <input type="submit" value="Mise à jour"/>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</section>
+<section>
+    <h1>Ajouter une exoplanète découverte</h1>
+    <form method="post" action="/exoplanets/add">
+        <h6>
+            Nom de l'exoplanète découverte : <input type="text" name="unique_name" />
+        </h6>
+        <h6>
+            Classe Habitale de l'exoplanète :
+            <select name="hclass" id="hClass">
+                <option>Mésoplanète</option>
+                <option>Psychroplanète</option>
+                <option>Thermoplanète</option>
+                <option>Non-Habitable</option>
+            </select>
+        </h6>
+        <h6>
+            Année de Découverte : <input type="number" name="discovery_year" min="2000" max="2022" />
+        </h6>
+        <input type="submit" name="nom" />
+    </form>
+</section>
+<section>
+    <h1>Recherche d'une planète déja découverte</h1>
+    <form method="post" action="/exoplanets/search">
+        <input type="search" name="unique_name" />
+        <input type="submit" name="search" />
+    </form>
+    <p>
+    {{#if (eq exoplanete "Veuillez entrer 3 caractères au minimum")}} {{exoplanete}}
+    {{else}}
+    <table>
+        <tr>
+            <th>Nom Exoplanète</th>
+            <th>hclass</th>
+            <th>Année de découverte</th>
+        </tr>
+        {{#each exoplanete}}
+        <tr>
+            <td>{{this.unique_name}}</td>
+            <td>{{this.hclass}}</td>
+            <td>{{this.discovery_year}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    {{/if}}
+    </p>
+</section>

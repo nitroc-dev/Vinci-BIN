@@ -1,0 +1,82 @@
+<main class="bg-gray-400 grid w-full">
+    {{#if error}}
+        <section class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </section>
+    {{/if}}
+    <section class="items-center text-center place-content-center">
+        <h2 class="text-2xl">Questions Reportées</h2>
+    </section>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-3/6">Titre</th>
+            <th class="border-solid border rounded w-2/6">Sujet</th>
+            <th class="border-solid border rounded w-1/6">Actions</th>
+        </tr>
+        {{#each questionsReported}}
+            <tr class="border-solid border rounded">
+                <td class="border-solid border rounded p-2">{{this.title}}</td>
+                <td class="border-solid border rounded p-2">{{this.subject}}</td>
+                <td class="border-solid border rounded p-2 text-center">
+                    <table class="w-full">
+                        <tr>
+                            <td>
+                                <a class="text-gray-400 hover:text-white text-center no-underline bg-gray-600 rounded p-2" href="/questions?questionId={{this.id_question}}">Voir</a>
+                            </td>
+                            <td>
+                                <form action="/admin/delete" method="post">
+                                    <input type="hidden" value="{{this.id_question}}" name="id_question">
+                                    <input class="text-gray-400 hover:text-white text-center cursor-pointer no-underline bg-gray-600 rounded p-2" type="submit" value="Supprimer">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/admin/decline" method="post">
+                                    <input type="hidden" value="{{this.id_question}}" name="id_question">
+                                    <input class="text-gray-400 hover:text-white text-center cursor-pointer no-underline bg-gray-600 rounded p-2" type="submit" value="Garder">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+    <br />
+    <section class="items-center text-center place-content-center">
+        <h2 class="text-2xl">Réponses Reportées</h2>
+    </section>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-3/6">Réponse</th>
+            <th class="border-solid border rounded w-2/6">Question liée</th>
+            <th class="border-solid border rounded w-1/6">Actions</th>
+        </tr>
+        {{#each answersReported}}
+            <tr class="border-solid border rounded">
+                <td class="border-solid border rounded p-2">{{this.question_answer}}</td>
+                <td class="border-solid border rounded p-2">{{this.title}}</td>
+                <td class="border-solid border rounded p-2 text-center">
+                    <table class="w-full">
+                        <tr>
+                            <td>
+                                <a class="text-gray-400 hover:text-white text-center no-underline bg-gray-600 rounded p-2" href="/questions?questionId={{this.id_answer}}">Voir</a>
+                            </td>
+                            <td>
+                                <form action="/admin/delete" method="post">
+                                    <input type="hidden" value="{{this.id_answer}}" name="id_answer">
+                                    <input class="text-gray-400 hover:text-white text-center cursor-pointer no-underline bg-gray-600 rounded p-2" type="submit" value="Supprimer">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/admin/decline" method="post">
+                                    <input type="hidden" value="{{this.id_answer}}" name="id_answer">
+                                    <input class="text-gray-400 hover:text-white text-center cursor-pointer no-underline bg-gray-600 p-2 rounded" type="submit" value="Garder">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</main>

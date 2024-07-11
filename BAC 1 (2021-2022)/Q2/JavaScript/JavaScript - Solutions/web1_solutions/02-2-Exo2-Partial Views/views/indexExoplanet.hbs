@@ -1,0 +1,17 @@
+<section>
+    <h1>Liste des exoplanètes</h1>
+    <table>
+        <tr>
+            <th>Nom Exoplanète</th>
+            <th>hClass</th>
+            <th>Année de découverte</th>
+        </tr>
+        {{#each exoplanetsTable}}
+        <tr>
+            <td>{{this.uniqueName}} </td>
+            <td>{{this.hClass}} </td>
+            <td>{{this.discoveryYear}} </td>
+        </tr>
+        {{/each}}
+    </table>
+</section>

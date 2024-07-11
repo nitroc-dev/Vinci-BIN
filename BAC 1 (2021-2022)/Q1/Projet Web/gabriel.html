@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>HTML/Anglais - Gabriel</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg px-5 py-3">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link px-3" href="index.html">Accueil</a>
+            <a class="nav-link px-3" href="corentin.html">Corentin</a>
+            <a class="nav-link px-3 active" href="gabriel.html">Gabriel</a>
+            <a class="nav-link px-3" href="john.html">John</a>
+            <a class="nav-link px-3" href="samy.html">Samy</a>
+            <a class="nav-link px-3" href="sungrab.html">Sungrab</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="gabriel" class="container-fluid">
+    <div class="row">
+    <section id="gabriel-image-presentation" class="image-presentation d-flex justify-content-center align-items-center">
+        <div class="presentation-text text-center">
+            <h1>Gabriel Torres Silva</h1>
+            <ul class="d-flex justify-content-center py-2">
+                <li><a class="px-2" href="#about">À propos</a></li>
+                <li><a class="px-2" href="#knowledge">Compétences</a></li>
+                <li><a class="px-2" href="#hobbies">Hobbies & Contact</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="container pt-4 text-center">
+      <h2 id="about" class="pt-5">Qui suis-je ?</h2>
+      <p class="py-2">Je m'appelle Gabriel et je suis cette année étudiant en 1BIN à l'IPL. Jeune diplômé en techniques infographiques, j'ai décidé de commencer ce nouveau cursus pour approfondir mes connaissances dans les domaines que je maitrise déjà ainsi que d'en apprendre plus sur le monde du web en général.</p>
+      <p>Vous trouverez toutes les informations utiles sur moi ici bas. Bonne visite !</p>
+    </section>
+    <section class="container pt-4">
+      <h2 id="knowledge" class="text-center pt-5">Quelles sont mes compétences ?</h2>
+      <p class="text-center">Vous retrouverez ci-dessous une liste non exhaustives de programmes et des technologies sur lesquels j'ai déjà eu l'occasion de travailler par le passé.</p>
+        <table class="table table-striped my-4">
+          <tr>
+            <th>Langues</th>
+            <th>Programmes</th>
+            <th>Technologies maitrisées</th>
+          </tr>
+          <tr>
+            <td>Français (C2)</td>
+            <td>Adobe Photoshop</td>
+            <td>HTML/CSS|SCSS|SASS</td>
+          </tr>
+          <tr>
+            <td>Anglais (C1)</td>
+            <td>Adobe Illustrator</td>
+            <td>PHP/SYMFONY</td>
+          </tr>
+          <tr>
+            <td>Portugais (C2)</td>
+            <td>Adobe InDesign</td>
+            <td>JS/TS</td>
+          </tr>
+          <tr>
+            <td>Espagnol (B2)</td>
+            <td>Adobe XD</td>
+            <td>REACTJS/NODEJS</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>GITHUB</td>
+          </tr>
+        </table> 
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 px-5 text-center">
+          <h2 id="hobbies" class="pt-5">Quels sont mes hobbies ?</h2>
+          <p>Sur mon temps libre, j'aime être constamment dans l'apprentissage, j'essaie d'étendre mes connaissances le plus loin possible j'ai donc une liste d'hobbies très variée. Ci-dessous une liste de mes principales activités extrascolaires.</p>
+          <ol>
+            <li>Sport</li>
+            <li>Informatique</li>
+            <li>Photographie</li>
+            <li>Art moderne</li>
+            <li>Mécanique</li>
+            <li>Jeux vidéos</li>
+            <li>Musique</li>
+          </ol>
+          <p>Vous pouvez retrouvez toutes mes photos en suivant <a target="_blank" href="https://www.flickr.com/photos/162731545@N03/">ce lien</a> !</p>
+        </div>
+        <div class="col-12 col-md-6 px-5">
+          <h2 id="hobbies" class="text-center pt-5">Contactez moi.</h2>
+          <form action="form-treatment.php" method="POST">
+            <div class="form-group py-2">
+              <label for="sender-email">Votre email*</label>
+              <input type="email" class="form-control" id="sender-email" placeholder="john.doe@gmail.com" required>
+            </div>
+            <div class="form-group py-2">
+              <label for="mail-subject">Sujet*</label>
+              <input type="text" class="form-control" id="mail-subject" placeholder="Hello !" required>
+            </div>
+            <div class="form-group py-2">
+              <label for="mail-message">Votre message*</label>
+              <textarea class="form-control" id="mail-message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btns">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  </main>
+  <footer class="mt-4 container-fluid d-flex justify-content-center align-items-end">
+    <div class="container">
+      <p>&copy; Corentin, Gabriel, John, Samy, Sungrab</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

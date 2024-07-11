@@ -1,0 +1,718 @@
+/* GABRIEL */
+#gabriel .form-group input,#gabriel .form-group textarea{
+    background-color: transparent;
+    padding:1rem;
+    border:1px solid #333;
+    border-radius: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.nav-link{
+    position:relative;
+}
+.nav-link:after{
+    position:absolute;
+    bottom:0;
+    left:calc(50% - 10px);
+    content:"";
+    height:0.8px;
+    background-color:#333;
+    width:0px;
+    transition:all 0.3s ease;
+}
+.nav-link:hover:after{
+    width:20px;
+}
+.active:after{
+    position:absolute;
+    bottom:0;
+    left:calc(50% - 10px);
+    content:"";
+    width:20px;
+    height:0.8px;
+    background-color:#333;
+}
+.btns{
+    border:1px solid #333;
+    color:#333;
+    border-radius:0!important;
+    padding:1rem!important;
+}
+.btns:hover{
+    background-color:#333;
+    color:white!important;
+    border:1px solid #333;
+}
+
+ul{
+    margin:0!important;
+    padding:0!important;
+}
+html{
+    font-size:15px;
+    font-family: "Montserrat";
+    color:#333;
+}
+.navbar,body,footer{
+    background:url("../images/home/bg-texture.png") repeat;
+}
+footer{
+    height:150px;
+}
+nav *{
+    font-weight: 600!important;
+    text-transform: uppercase;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Playfair Display";
+}
+h1{
+    font-size:3rem;
+}
+h3{
+    font-size:1.5rem;
+}
+
+a{
+    text-decoration: none!important;
+    transition:all 0.3s ease;
+}
+
+#homepage main{
+    height:100vh;
+}
+
+#homepage-text{
+    text-transform: uppercase;
+    text-align:center;
+}
+
+#homepage-text h1{
+    /* font-weight:800; */
+    font-size:10rem;
+    line-height:4.5rem;
+}
+
+#homepage-text p{
+    text-transform:initial;
+    width:60%;
+    margin:auto;
+}
+
+#homepage-text #second-line{
+    font-size:3.5rem;
+}
+
+/* IMAGE-PRESENTATION */
+#gabriel-image-presentation{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.418) 0%, rgba(255,255,255,0) 100%), url("../images/gabriel/gabriel-bg.jpg") center center/cover;
+}
+#corentin-image-presentation{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.418) 0%, rgba(255,255,255,0) 100%), url("../images/Corentin/background.jpg") center center/cover;
+}
+#samy-image-presentation{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.418) 0%, rgba(255,255,255,0) 100%), url("../images/Samy/Samy_Garde3.jpeg") center center/cover;
+}
+.image-presentation{   
+    height:100vh;
+    width:100%;
+}
+.image-presentation ul{
+    list-style:none;
+}
+.presentation-text *{
+    color:white;
+}
+
+/* CORENTIN */
+
+#corentin #conteneur {
+    display:flex;
+    justify-content:space-between;
+    padding: 50px;
+}
+
+#corentin article {
+    padding:20px;
+    width:28%;
+    background:darkgray;
+    border: 1px solid ; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; -o-border-radius: 10px;
+}
+
+#corentin .table-item {
+    padding: 5px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+}
+/* FORM */
+#corentin #footer {
+    place-items: center;
+    display: grid;
+    background-color: darkgray;
+    padding: 10px;
+}
+
+#corentin .wrapper {
+    display: inline-flex;
+}
+
+#corentin .wrapper .icon {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#corentin .wrapper .icon:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+#corentin form { max-width:420px; margin:50px auto; }
+
+#corentin .feedback-input {
+    color:white;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: transparent;
+    border:2px solid gray;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width:100%;
+    box-sizing: border-box;
+    outline:0;
+}
+
+#corentin .feedback-input:focus { border:2px solid #CC4949; }
+
+#corentin textarea {
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+#corentin [type="submit"] {
+    width: 100%;
+    background: gray;
+    border-radius:5px;
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-size:24px;
+    padding-top:10px;
+    padding-bottom:10px;
+    transition: all 0.3s;
+    margin-top:-4px;
+    font-weight:700;
+}
+#corentin [type="submit"]:hover { background: dimgray; }
+
+/* SAMY */
+
+#Samy .SamyOffer{
+  font-size: 65px;
+}
+#Samy .navMenuSamy a{
+  display: inline-block;
+  text-align: center;
+  color: #69A1AC;
+  font-size: 30px;
+  display: inline-block;
+  text-decoration: none;
+  margin: 5px;
+}
+
+#Samy .presentation{
+  padding-top:20px;
+  padding-bottom:20px;
+  font-size: 30px;
+  text-align: center;
+
+}
+#Samy .texte_presentation{
+  font-size: 15px;
+  text-align: center;
+}
+
+#Samy table {
+width: 100%;
+padding: 40px;
+background-color:#fefbf6;
+text-align: center;
+}
+
+#Samy .hobby_form{
+display: flex;
+flex-direction:row;
+}
+
+
+#Samy .hobby{
+font-size: 40px;
+padding-left: 5%;
+padding-right: 5%;
+margin-right: 8%;
+margin-top: 5px;
+background-color:#fefbf6;
+border: 2px solid black;
+border-radius: 20px; 
+
+}
+
+#Samy .list{
+text-align: left;
+}
+
+#Samy input[type=text], select {
+width: 100%;
+padding: 15px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid black;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+#Samy input[type=submit] {
+width: 100%;
+background-color: black;
+color: #fefbf6;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+#Samy .lien{
+font-size: 25px;
+text-align: center;
+}
+
+#Samy .contactez{
+  font-size: 15px;
+}
+
+/* SUNGRAB */
+
+#sungrab{
+    margin: 0 auto;
+}
+#sungrab section.pg1{
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+
+    flex-direction: column;
+    background: url("../images/sungrab/blanc1.jpg");
+    background-repeat: no-repeat;
+    background-position: 10% 20%;
+
+
+}
+#sungrab .header{
+    text-align: center;
+    height: 150px;
+    margin-top: 0px;
+    font-size: 30px;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#sungrab nav.lien{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 25px;
+    width:400px;
+    margin-left: 40px;
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-60%, -50%);
+    color: black;
+
+}
+#sungrab nav.lien li a{
+    font-size: 23px;
+    color: black;
+}
+#sungrab section#pg2{
+
+    background-size: cover;
+    height: 100vh;
+    background: url("../images/sungrab/blanc2.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 60%;
+
+}
+#sungrab .titre{
+
+    margin-left: 60px;
+    margin-bottom: 150px;
+    margin-right: 950px;
+    position: absolute;
+    top: 105%;
+    left: 20%;
+
+}
+#sungrab .titre h2{
+    font-size: 35px;
+}
+#sungrab .titre .moi{
+
+    text-align: justify;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+#sungrab .presentation{
+
+    list-style: none;
+    position: absolute;
+    top: 160%;
+    margin-left: 1300px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+}
+#sungrab .presentation h3{
+
+    font-size: 35px;
+}
+#sungrab .presentation .titrepresentation{
+
+    font-size: 25px;
+}
+#sungrab .presentation li{
+    list-style: none;
+    font-size: 20px;
+}
+#sungrab section#pg3{
+    background-size: cover;
+    height: 100vh;
+    background: url("../images/sungrab/blanc3.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+#sungrab .formulaire{
+
+    position: absolute;
+    top: 230%;
+    right: 5%;
+}
+#sungrab .titrecontact{
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+#sungrab label,#sungrab input{
+
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+#sungrab input{
+    height: 20px;
+    border-radius: 3px ;display: block;
+    transition: all 0.5s ease;
+}
+#sungrab input:focus{
+    border-color: #e8badd;
+}
+#sungrab .table {
+
+    position: absolute;
+    height: 30%;
+    top: 230%;
+    left: 5%;
+    border-collapse: collapse;
+    min-width: 400px;
+    width: auto;
+    cursor: pointer;
+
+    border-right: black;
+
+
+}
+#sungrab h4{
+    font-size: 30px;
+border-bottom: 1px solid black;
+    text-align: center;
+}
+#sungrab th{
+    border-bottom: 1px solid black;
+}
+#sungrab thead tr{
+    font-size: 20px;
+
+}
+#sungrab th,#sungrab tr{
+    padding: 20px 30px;
+    text-align: center;
+}
+#sungrab tbody tr,#sungrab td,#sungrab th{
+    border-right:1px solid black;
+}
+
+/* JOHN */
+#zouky main{ /* Background */
+    background: url("../images/john/bg.jpg") center center/cover;
+    height: 100vh; /* vh : mesure de taille par rapport à taille écran */
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 1rem 0;
+}
+    /* Positionnement bigtitle */
+#zouky #bigtitle{
+    margin: 1rem 0 20rem 31rem;
+}
+    /* Taille et style grand titre */
+#zouky #bigtitle h1{
+    font-size: 5rem;
+    text-decoration: none;
+}
+    /* Lien vers image */
+#zouky #Abigtitle{
+    color: #333;
+    text-decoration: none;
+}
+#zouky #Abigtitle:hover{
+    color: #0a0ae3;
+}
+    /* Tout mettre sur même ligne */
+#zouky .maine{
+    display: flex; /*flex : magique!*/
+}
+    /* Nav-bar */
+#zouky .button{
+    text-decoration: underline;
+    margin: 1rem;
+    color : #333
+}
+#zouky .button:hover{
+    color: gray;
+}
+#zouky #nav-bar{
+    font-size: 1.25rem;
+    margin: 0 0 0 1.75rem;
+}
+
+        /* Who Am I */
+
+    /* Position Who Am I */
+#zouky h2{
+    color: black;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    text-decoration: underline;
+}
+    /* Style Who Am I */
+#zouky #whoami{
+    border: solid #333;
+    border-radius: 50%;
+    box-shadow: 0.5rem 0.5rem 0.75rem gray;
+    color: black;
+    margin: 2.5rem 35rem 8rem;
+    width: 30rem;
+}
+
+        /* Les médias */
+
+#zouky #zimages{
+    display: flex;
+    margin: 2rem 0 0 2rem;
+}
+    /* Image 1 */
+#zouky #image1{
+    border: solid #333;
+    margin: 4rem 1rem 2rem 0;
+    width: 25rem;
+    box-shadow: 0.5rem -0.5rem 0.75rem grey;
+}
+    /* Image 2 */
+#zouky #image2{
+    border: solid;
+    margin: 3rem 0 0 2rem;
+    width: 28rem;
+    box-shadow: 0.5rem -0.5rem 0.75rem grey;
+}
+    /* Image 4 */
+#zouky #image4{
+    border: solid #333;
+    margin: 4.5rem 0 3rem 2rem;
+    width: 28rem;
+    box-shadow: 0.5rem -0.5rem 0.75rem grey;
+}
+    /* Image 5 */
+#zouky #image5{
+    border: solid #333;
+    width: 24rem;
+    margin: -1.5rem 0 0 0.75rem;
+    box-shadow: 0.5rem -0.5rem 0.75rem grey;
+}
+    /* Video 1 */
+#zouky #video1{
+    border: solid;
+    margin: 10rem 1rem 0 2rem;
+    width: 18.14rem;
+    box-shadow: 0.5rem -0.5rem 0.75rem grey;
+}
+    /* video 2 */
+#zouky #video2{
+    border: solid;
+    border-radius: 5%;
+    margin: 0 2rem 0 2rem;
+    width: 20rem;
+    height: 25rem;
+    box-shadow: 0.5rem 0.5rem 0.75rem grey;
+}
+    /* music */
+#zouky #mybeat{
+    border: solid;
+    border-radius: 45%;
+    background-color: whitesmoke;
+    margin: 0 auto 2.5rem;
+    padding: 0.5rem 0 0.75rem 2rem;
+    box-shadow: 0.5rem 0.5rem 0.75rem grey;
+}
+#zouky #noline{
+    outline: none;
+}
+    /*div zOUkY Odt*/
+#zouky h3{
+    text-align: center;
+    margin: 0.25rem 0 0 0;
+
+}
+    /*h3 zOUkY Odt*/
+#zouky #odt{
+    border: dashed gray;
+    border-radius: 45%;
+    width: 15rem;
+    margin: 1rem 0 0 2.5rem;
+}
+
+        /* PP, hobby's et contacts */
+
+#zouky #pphc{
+    justify-content: space-between;
+    display: flex;
+    margin: 3rem 1rem 3rem 1rem;
+}
+    /* pp */
+#zouky #presentationpersonnelle{
+    border: solid #333;
+    width: 20rem;
+    margin: 7.5rem 0 10rem 1.5rem;
+    padding: 0.5rem 0.75rem 2rem 0.75rem;
+    border-radius: 15%;
+    box-shadow: 0.5rem 0.5rem 0.75rem grey;
+    height: 28rem;
+}
+    /* hobby's */
+#zouky #hobbys{
+    border: solid #333;
+    margin: 0 0 2.75rem 0;
+    padding: 0.5rem 0.5rem 2rem 1.5rem;
+    border-radius: 15%;
+    box-shadow: 0.5rem 0.5rem 0.75rem grey;
+}
+#zouky .liste{
+    margin: 0 0 0 1rem;
+}
+    /* contactez-moi */
+#zouky #contacts {
+    border: solid #333;
+    margin: 7.5rem 1.5rem 10rem 0;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    border-radius: 15%;
+    box-shadow: 0.5rem 0.5rem 0.75rem grey;
+    width: 20rem;
+    height: 28rem;
+}
+    /* Image 3 */
+#zouky #image3{
+    border: solid #333;
+    border-radius: 20%;
+    width: 19.745rem;
+    margin: -1rem 0 0 0;
+}
+
+        /* Formulaire */
+
+    /*ligne séparation*/
+#zouky form .separation{
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+}
+    /*corps du formulaire haut*/
+#zouky form .corps-formulaire{
+    flex-wrap: wrap; /*tout aligner sur la même marge*/
+    margin: 0 0 0.5rem 0;
+}
+    /*différents blocs dans corps*/
+#zouky form .corps-formulaire .boite{
+    position: relative;
+    margin: 1.5rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+#zouky form .corps-formulaire .haut .boite input{
+    margin: 0.25rem 0 0 0;
+    padding: 0.25rem 1rem 0.25rem 1.75rem;
+    border: 0.125rem solid #333;
+    height: 1.25rem;
+}
+#zouky form .corps-formulaire .haut .boite i{
+    position: absolute;
+    left: 0;
+    top: 30px;
+    padding: 0 0 0 0.5rem;
+}
+
+/*corps-formulaire bas*/
+#zouky form .corps-formulaire .bas{
+    margin: 0.75rem 0 0 0;
+}
+#zouky form .corps-formulaire .bas .boite{
+    height: 100%;
+}
+    /*barre de message*/
+#zouky form .corps-formulaire .bas .boite textarea{
+    margin: 0.5rem 0 0 0;
+    padding: 0.5rem;
+    background-color: whitesmoke;
+    border: 0.125rem solid #333;
+    resize: none;
+    height: 72%;
+}
+    /*pieds formulaire - boutton*/
+#zouky form .pied-formulaire button{
+    margin: 0.5rem 0 -0.75rem 0;
+    background-color: gray;
+    font-size: 1.25rem;
+    width: 20rem;
+    height: 2rem;
+}
+#zouky form .pied-formulaire button:hover{
+    color: whitesmoke;
+}

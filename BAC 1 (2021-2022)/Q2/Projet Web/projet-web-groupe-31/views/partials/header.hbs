@@ -1,0 +1,39 @@
+<header class="h-[8vh] bg-gray-600 w-full list-none overflow-hidden">
+    <ul>
+        <li class="float-left mx-4 my-2">
+            <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/">Accueil</a>
+        </li>
+        <li class="float-left mx-4 my-2">
+            <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/questions/add">Demande</a>
+        </li>
+        {{#if isAdmin}}
+            <li class="float-right mx-4 my-2">
+                <form method="post" action="/users/logout">
+                    <input class="float-left text-white text-center cursor-pointer no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" type="submit" value="Se déconnecter">
+                </form>
+            </li>
+            <li class="float-right mx-4 my-2">
+                <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/admin">Admin</a>
+            </li>
+            <li class="float-right mx-4 my-2">
+                <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/members">Utilisateur</a>
+            </li>
+        {{else if isAuthenticated}}
+            <li class="float-right mx-4 my-2">
+                <form method="POST" action="/users/logout">
+                    <input class="float-left text-white text-center cursor-pointer no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" type="submit" value="Se déconnecter">
+                </form>
+            </li>
+            <li class="float-right mx-4 my-2">
+                <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/members">Utilisateur</a>
+            </li>
+        {{else}}
+            <li class="float-right mx-4 my-2">
+            <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/users/register">Inscription</a>
+            </li>
+            <li class="float-right mx-4 my-2">
+                <a class="float-left text-white text-center no-underline text-2xl bg-gray-400 pr-2 pl-2 pt-1 pb-1 rounded" href="/users">Connexion</a>
+            </li>
+        {{/if}}
+    </ul>
+</header>

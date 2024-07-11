@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/ab69379785.js" crossorigin="anonymous"></script>
+        <title>HTML/Anglais - Corentin</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar fixed-top navbar-light navbar-expand-lg px-5 py-3">
+                <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                      <a class="nav-link px-3" href="index.html">Accueil</a>
+                      <a class="nav-link px-3 active" href="corentin.html">Corentin</a>
+                      <a class="nav-link px-3" href="gabriel.html">Gabriel</a>
+                      <a class="nav-link px-3" href="john.html">John</a>
+                      <a class="nav-link px-3" href="samy.html">Samy</a>
+                      <a class="nav-link px-3" href="sungrab.html">Sungrab</a>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+        </header>
+        <main id="corentin" class="container-fluid">
+            <div class="row">
+                <section id="corentin-image-presentation" class="image-presentation d-flex justify-content-center align-items-center">
+                    <div class="presentation-text text-center">
+                        <h1>Corentin</h1>
+                        <ul class="d-flex justify-content-center py-2">
+                            <li><a class="px-2" href="#introduction">Presentation</a></li>
+                            <li><a class="px-2" href="#personnel">Personnel</a></li>
+                            <li><a class="px-2" href="#sports">Sports</a></li>
+                            <li><a class="px-2" href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h1 class="text-center py-3">Corentin</h1>
+                    <div id="conteneur">
+                        <article>
+                            <h1 class="title-item">Presentation</h1>
+                            <p id="introduction">Bonjour à tous et à toutes, je m'appelle Corentin et sur cette page, vous allez en apprendre énormément sur moi.<p>
+                        </article>
+                        <article>
+                            <h1 class="title-item">Personnel</h1>
+                            <table id="personnel">
+                                <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="table-item">Nom/Prenom</td>
+                                    <td class="table-item">Corentin<br></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-item">Habite</td>
+                                    <td class="table-item">Bruxelles<br></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-item">Age</td>
+                                    <td class="table-item">18 ans<br></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-item">Ecole</td>
+                                    <td class="table-item">Paul Lambin<br></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-item">Etude</td>
+                                    <td class="table-item">Informatique de gestion<br></td>
+                                </tr>
+                                <tr>
+                                    <td class="table-item">Famille</td>
+                                    <td class="table-item">Une soeur<br></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </article>
+                        <article>
+                            <h1 class="title-item">Sports</h1>
+                            <ul id="sports">
+                                <li>Badminton</li>
+                                <li>Musculation</li>
+                                <li>Course à pied</li>
+                                <li>Tennis</li>
+                                <li>Judo</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+                <section>
+
+                </section>
+            </div>
+            <section id="footer">
+                <!--Button-->
+                <div class="wrapper">
+                <div class="icon instagram">
+                  <a href="https://www.instagram.com/redacted"><span><i class="fab fa-instagram"></i></span></a>
+                </div>
+                <div class="icon github">
+                    <a href="https://github.com/redacted"><span><i class="fab fa-github"></i></span></a>
+                </div>
+                <div class="icon discord">
+                    <a href="https://discord.gg/redacted"><span><i class="fab fa-discord"></i></span></a>
+                </div>
+              </div>
+                <!--Contact-->
+                <h4 id="form-name">Contact :</h4>
+                <form>
+                    <input name="name" type="text" class="feedback-input" placeholder="Nom" />
+                    <input name="email" type="text" class="feedback-input" placeholder="Email" />
+                    <textarea name="text" class="feedback-input" placeholder="Message"></textarea>
+                    <input type="submit" value="ENVOYER"/>
+                </form>
+            </section>
+        </main>
+        <footer class="mt-4 container-fluid d-flex justify-content-center align-items-end">
+            <div class="container">
+              <p>&copy; Corentin, Gabriel, John, Samy, Sungrab</p>
+            </div>
+          </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

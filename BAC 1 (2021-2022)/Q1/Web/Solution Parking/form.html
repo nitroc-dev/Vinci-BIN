@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="author" content="Choquet Olivier" />
+<title>Gestion Parc Info</title>
+<!-- une icône dans la barre du navigateur-->
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+<body>
+	<!-- bannière -->
+	<header>
+		<img src="images/computer.jpg" alt="ordi"/>
+		<img src="images/logo.png" alt="logo"/>
+	</header>
+	<!-- menu -->
+	<nav>
+			<ul>
+				<li><a href="index.html"> Accueil - Liste des machines </a></li>
+				<li><a href="incident.html"> Soumettre un incident </a></li>
+			</ul>
+	</nav>
+	<!-- partie centrale -->
+	<p>
+			Vous pouvez à l'aide de ce formulaire signaler un incident.	
+	</p>
+		<form method="POST" action="trt.php">
+			<fieldset class="conteneur">
+					<legend>Informations personnelles : </legend>
+				<section>
+					<label for="name">Votre nom : </label>
+					<input id="name" type="text" placeholder="Entrez ici votre nom" size="50"/><br>
+					<label for="firstname">Votre prénom : </label>
+					<input id="firstname" type="text" placeholder="Entrez ici votre prénom" size="50"/><br>
+					<label for="email">Votre email : </label>
+					<input id="email" type="email" placeholder="Entrez ici votre email" size="50" /><br>
+					<label for="section">Votre section : </label>
+						<select name="section">
+						<option >Diététique</option>
+						<option>Imagerie médicale</option>
+						<option>Biologie médicale</option>
+						<option>Chimie</option>
+						<option selected = "selected">Informatique</option>
+						</select>
+				</section>
+				<section>
+					<label for="date">Date de l'incident : </label>
+					<input type="date" name="date" min="2016-01-01" max="2020-09-15" step="7"/>
+					<br>
+					<label for="un_fichier">Photo de l'incident : </label>
+					<input type = "file" name = "un_fichier" />
+				</section>
+			</fieldset>
+			<fieldset><legend>Résumé du problème : </legend>
+				<textarea id="comment" cols="100" rows="5">Entrez ici l'incident
+				</textarea>
+			</fieldset>
+			<input type="submit" value="Envoyer"/>
+		</form>
+	<footer>
+		<p>
+			Design by Choquet Olivier.
+		</p>
+	</footer>
+</body>
+
+</html>

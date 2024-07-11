@@ -1,0 +1,144 @@
+/* mettre par défaut toutes les marges intérieures et extérieures à 0 */
+/* { margin: 0; padding: 0; outline: 0;}*/
+
+
+body {
+	font-family:Verdana;
+}
+
+/************************************************ Partie HEADER **********************************************************************/
+header {
+  margin: auto;
+  text-align:center;
+  background-color:white;
+  border: 1px solid blue;
+}
+
+header img {
+ margin : 10px;
+}
+/*****************************************************MENU******************************************************************************/
+nav {
+	background-color:black;
+	height:50px;
+}
+
+nav ul {
+	padding-top:10px;
+}
+
+nav  li{
+	display:inline;
+	font-size:20px;
+	padding:20px;
+	margin-top:100px;
+}
+
+nav li a {
+	margin-top:100px;
+	color:white;
+	text-decoration:none;
+}
+
+nav a:hover, nav a.current {
+	color:orange;
+}
+
+/************************************************ Partie CENTRALE **********************************************************************/
+.conteneur {
+	display:flex;
+	flex-direction:row;
+}
+
+article {
+margin:10px;
+padding:10px;
+/* 80% car margin prend 10 px de chaque côté + aside*/
+width:75%;
+/*float:left;*/
+}
+
+h4{
+text-decoration: underline;
+}
+
+ul {
+margin:10px;
+}
+
+/************************************************ liste machines **********************************************************************/
+
+#listeIncidents
+{
+	width:100%;
+	border : 1px solid;
+	border-collapse: collapse;
+}
+
+article h2 {
+	color:blue;
+	font-size:20pt;
+	padding-bottom:10px;
+	text-align:center;
+}
+
+/* un pourcentage pour la largeur de chaque colonne */
+th.Nom, th.Gravite {
+  border : 1px solid;
+  width: 20%;
+}
+
+th.Local {
+  border : 1px solid;
+  width: 10%;
+}
+
+th.Resume {
+   	border : 1px solid;
+   width:50%;
+}
+
+td {
+	border : 1px solid;
+	text-align:center;
+}
+
+/********************************************************ASIDE*************************************************************************/
+aside {
+	background-color:orange;
+	margin:10px;
+	width:1050px;
+}
+
+
+/************************************************ Partie FOOTER **********************************************************************/
+footer {
+	height:50px;
+	background:black;
+	color:white;
+	text-align:center;
+	margin:auto;
+}
+
+footer p {
+	padding-top: 15px;
+}
+
+/************************************************ Partie Formulaire **********************************************************************/
+form {
+	margin:50px;
+}
+
+form * {
+	margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+1) 
+
+CREATE TABLE bd1.albums(
+  isbn 			char(13) PRIMARY KEY,
+  titre 		varchar(50) NOT NULL,
+  serie			varchar(20),
+  scenariste 	varchar(20),
+  dessinateur 	varchar(20),
+  coloriste 	varchar(20),
+  editeur 		varchar(20) NOT NULL,
+  pays 			char(2),
+  annee_edition integer,
+  prix 			double precision NOT NULL
+)
+
+2) 
+
+C'est la primary key, un identifiant unique pour chaque enregistrement
+
+3)
+INSERT INTO bd1.albums VALUES ('2-87097-055-9','Joyeux Noël, May', 'Lucky Luke','Cosey','Cosey','Cosey','Dupuis','be',1998,7);
+
+INSERT INTO bd1.albums VALUES ('2-87097-055-4','May', 'Month','Dame','Nature','Cosey','Dupuis','be',1998,7);
+
+Niveau 2
+
+a) CREATE TABLE bd2.editeur 
+(num integer PRIMARY KEY,
+nom varchar(50) NOT NULL,
+adresse varchar(255),
+pays char(2))
+
+CREATE TABLE bd2.albums
+(isbn 		char(13) 	PRIMARY KEY,
+titre 		varchar(50) 	NOT NULL,
+serie		varchar(20),
+scenariste 	varchar(20),
+dessinateur 	varchar(20),
+coloriste 	varchar(20),
+prix		double precision NOT NULL,
+num_editeur 	integer	NOT NULL REFERENCES bd2.editeur(num),
+annee_edition 	integer)
+
+b) FK Foreign key (clé étrangère) permet de relier deux tables entre elles.
+
+c) 
+INSERT INTO bd2.editeurs VALUES (1, 'Michel', 'Rue des Tilleuls', 'be')
+INSERT INTO bd2.editeurs VALUES (2, 'Francois', 'Clos de la Tramontane', 'be')
+
+INSERT INTO bd2.albums VALUES ('2-87097-055-9','Joyeux Noël, May', 'Lucky Luke','Cosey','Cosey','Cosey', 5, 2,1998);
+
+INSERT INTO bd2.albums VALUES ('2-87097-055-4','May', 'Month','Dame','Nature','Cosey', 7, 1,1998);
+
+d) 
+

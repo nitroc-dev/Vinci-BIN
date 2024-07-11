@@ -1,0 +1,22 @@
+<section>
+    <h1>Mettre à jour une exoplanète découverte</h1>
+    <form method="post" action="/exoplanets/update">
+        <h6>
+            Nom de l'exoplanète découverte : <input type="text" value="{{exoplanet.unique_name}}" name="unique_name_update" />
+        </h6>
+        <h6>
+            Classe Habitale de l'exoplanète :
+            <select name="hclass_update">
+                <option {{#if (eq exoplanet.hclass "Mésoplanète")}} selected {{/if}}>Mésoplanète</option>
+                <option {{#if (eq exoplanet.hclass "Psychroplanète")}} selected {{/if}}>Psychroplanète</option>
+                <option {{#if (eq exoplanet.hclass "Thermoplanète")}} selected {{/if}}>Thermoplanète</option>
+                <option {{#if (eq exoplanet.hclass "Non-Habitable")}} selected {{/if}}>Non-Habitable</option>
+            </select>
+        </h6>
+        <h6>
+            Année de Découverte : <input type="number" value="{{exoplanet.discovery_year}}" name="discovery_year_update" min="2000" max="2022" />
+        </h6>
+        <input type="hidden" name="exoplanet_id_update" value="{{exoplanet.exoplanet_id}}" />
+        <input type="submit" name="nom" />
+    </form>
+</section>

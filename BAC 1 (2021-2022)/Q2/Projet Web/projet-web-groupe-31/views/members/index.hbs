@@ -1,0 +1,42 @@
+<main class="bg-gray-400 h-full grid w-full">
+    {{#if error}}
+        <div class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </div>
+    {{/if}}
+    <div class="items-center text-center place-content-center">
+        <h2 class="text-2xl">Questions Ouvertes</h2>
+    </div>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-4/6">Question</th>
+            <th class="border-solid border rounded w-2/6">Actions</th>
+        </tr>
+        {{#each questionsOpened}}
+            <tr class="border-solid border-2 rounded">
+                <td class="border-solid border rounded p-2">{{this.title}}</td>
+                <td class="border-solid border rounded p-2 text-center">
+                    <a class="text-gray-400 hover:text-white text-center no-underline bg-gray-600 rounded p-2" href="/questions?questionId={{this.id_question}}">Voir</a>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+    <br>
+    <div class="items-center text-center place-content-center">
+        <h2 class="text-2xl">Questions Résolues</h2>
+    </div>
+    <table class="border-solid border-2 rounded m-8">
+        <tr class="border-solid border-2 rounded">
+            <th class="border-solid border rounded w-4/6">Question</th>
+            <th class="border-solid border rounded w-2/6">Actions</th>
+        </tr>
+        {{#each questionsSolved}}
+            <tr class="border-solid border-2 rounded">
+                <td class="border-solid border rounded p-2">{{this.title}}</td>
+                <td class="border-solid border rounded p-2 text-center">
+                    <a class="text-gray-400 hover:text-white text-center no-underline bg-gray-600 rounded p-2" href="/questions?questionId={{this.id_question}}">Voir</a>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</main>

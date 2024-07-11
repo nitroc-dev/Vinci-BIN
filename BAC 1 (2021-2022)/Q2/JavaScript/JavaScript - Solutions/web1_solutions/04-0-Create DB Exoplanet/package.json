@@ -1,0 +1,19 @@
+{
+  "name": "04-0-test-db",
+  "version": "1.0.0",
+  "description": "Projet testant la connexion avec une DB SQLite",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Choquet Olivier",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,49 @@
+<main class="bg-gray-400 grid w-full">
+    {{#if error}}
+        <div class="bg-red-500 text-white p-2 rounded">
+            {{error}}
+        </div>
+    {{/if}}
+    <section class="items-center text-center object-center place-content-center">
+        <img src="/images/logo.png" alt="logo" class="mt-1 block mx-auto">
+        <p>Where everything finds an answer</p>
+        <br/>
+        <form action="" method="get">
+            <label>
+                <input class="text-center h-[4vh] bg-gray-200 object-contain w-[80vh]" type="text" placeholder="Rechercher..." name="title" >
+            </label>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </section>
+    <section>
+        <br/>
+        <div class ="items-center text-center place-content-center">
+            <h2 class="text-2xl mb-4">Categories</h2>
+            {{#each categories}}
+                <label class="bg-gray-600 m-1 items-center text-center place-content-center p-0.5 px-2 rounded text-gray-400 hover:text-white">
+                    <a id="{{this.id}}" href="?categoryId={{this.id_category}}">{{this.name}}</a>
+                </label>
+            {{/each}}
+        </div>
+    </section>
+    <br />
+    <h2 class="text-2xl text-center">Questions</h2>
+    {{#each questions}}
+        <table class="m-8">
+            <tr class="border-solid border-2 rounded">
+                <th class="border-solid border rounded w-1/2">Intitulé</th>
+                <th class="border-solid border rounded w-1/2">Information</th>
+            </tr>
+            <tr class="border-solid border-2 rounded">
+                <td class="border-solid border rounded p-2"><h2>{{this.title}}</h2></td>
+                <td class="border-solid border rounded p-2 text-center">
+                    <p>{{this.creation_date}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="p-2 text-center">
+                    <a class="text-gray-400 hover:text-white text-center no-underline bg-gray-600 rounded p-1" href="/questions?questionId={{this.id_question}}">Voir la question</a>
+                </td>
+        </table>
+    {{/each}}
+</main>
