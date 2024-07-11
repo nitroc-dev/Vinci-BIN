@@ -1,0 +1,49 @@
+{
+  "name": "devops-06-ci",
+  "version": "1.0.0",
+  "description": "devops 06 recap and ci",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+	"test:coverage": "jest --coverage",
+	"test:watch": "jest --watchAll",
+    "commit": "cz",
+    "build": "webpack ./src/app.js -o public/",
+    "prettier": "prettier -c \"src/**/*.js\"",
+    "prettier:fix": "prettier -w \"src/**/*.js\"",
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint --fix \"src/**/*.js\"",
+    "code:fix": "npm run prettier:fix && npm run lint:fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlstechteaching/devops-06-ci.git"
+  },
+  "keywords": [
+    "devOps",
+    "tdd",
+    "ci",
+    "git"
+  ],
+  "author": "dls",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlstechteaching/devops-06-ci/issues"
+  },
+  "homepage": "https://github.com/dlstechteaching/devops-06-ci#readme",
+  "devDependencies": {
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "8.5.0",
+    "jest": "^29.3.1",
+    "prettier": "2.7.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

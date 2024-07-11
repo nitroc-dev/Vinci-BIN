@@ -1,0 +1,39 @@
+{
+  "name": "devops-prj-001-tdd-bowling-kata",
+  "version": "1.0.0",
+  "description": "Projet Bowling Kata 2022",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --fix .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "code:fix": "prettier --write . && eslint --fix .",
+    "commit": "cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdhaeyere/devops-prj-001-tdd-bowling-kata.git"
+  },
+  "author": "group-20",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdhaeyere/devops-prj-001-tdd-bowling-kata/issues"
+  },
+  "homepage": "https://github.com/cdhaeyere/devops-prj-001-tdd-bowling-kata#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.27.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "2.7.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
